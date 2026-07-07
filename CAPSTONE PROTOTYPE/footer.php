@@ -44,6 +44,7 @@
         <script>
             // Simple image slider functionality
             let slideIndex = 0;
+            let slideTimer;
 
             function showSlides() {
                 let slides = document.querySelectorAll('.slide');
