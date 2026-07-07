@@ -1,7 +1,4 @@
 <?php
-// ==========================================
-// CONFIGURATION & DATA MANAGEMENT
-// ==========================================
 
 const DATA_FILE = 'data.json';
 
