@@ -2,9 +2,6 @@
 
 const DATA_FILE = 'data.json';
 
-/**
- * Load data from JSON file or create default structure
- */
 function loadData()
 {
     // Check if file exists
