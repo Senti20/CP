@@ -42,20 +42,50 @@
         </footer>
 
         <script>
-            // Simple image slider functionality
+            // Improved image slider functionality
             let slideIndex = 0;
             let slideTimer;
 
-            function showSlides() {
+            function showSlides(n) {
                 let slides = document.querySelectorAll('.slide');
+                let dots = document.querySelectorAll('.dot');
+
                 if (slides.length === 0) return;
+
+                // Handle index wrapping
+                if (n >= slides.length) slideIndex = 0;
+                else if (n < 0) slideIndex = slides.length - 1;
+                else slideIndex = n;
+
+                // Hide all slides and deactivate all dots
                 slides.forEach((slide, index) => {
                     slide.style.display = (index === slideIndex) ? 'block' : 'none';
                 });
-                slideIndex = (slideIndex + 1) % slides.length;
-                setTimeout(showSlides, 5000);
+
+                if (dots.length > 0) {
+                    dots.forEach((dot, index) => {
+                        dot.className = dot.className.replace(" active", "");
+                        if (index === slideIndex) dot.className += " active";
+                    });
+                }
+
+                // Reset timer
+                clearTimeout(slideTimer);
+                slideTimer = setTimeout(() => showSlides(slideIndex + 1), 6000);
             }
-            document.addEventListener('DOMContentLoaded', showSlides);
+
+            // Manual navigation functions
+            function moveSlide(n) {
+                showSlides(slideIndex + n);
+            }
+
+            function currentSlide(n) {
+                showSlides(n);
+            }
+
+            document.addEventListener('DOMContentLoaded', () => {
+                showSlides(slideIndex);
+            });
         </script>
         </body>
 

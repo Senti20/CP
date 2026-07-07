@@ -42,10 +42,15 @@ $announcements = isset($data['announcements']) ? $data['announcements'] : [];
             <?php endforeach; ?>
         <?php endif; ?>
     </div>
+
+    <!-- Slider Navigation Buttons -->
+    <button class="slider-btn prev-btn" onclick="moveSlide(-1)" aria-label="Previous slide">❮</button>
+    <button class="slider-btn next-btn" onclick="moveSlide(1)" aria-label="Next slide">❯</button>
+
     <div class="slider-dots">
         <?php $slideCount = max(1, count($slides)); ?>
         <?php for ($i = 0; $i < $slideCount; $i++): ?>
-            <span class="dot <?php echo $i === 0 ? 'active' : ''; ?>"></span>
+            <span class="dot <?php echo $i === 0 ? 'active' : ''; ?>" onclick="currentSlide(<?php echo $i; ?>)"></span>
         <?php endfor; ?>
     </div>
 </section>
